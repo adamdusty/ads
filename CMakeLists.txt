@@ -44,3 +44,5 @@ if(BUILD_TESTING)
 enable_testing()
 add_subdirectory(tests)
 endif(BUILD_TESTING)
+
+target_compile_options(ads PRIVATE -Wall -Wextra -Wpedantic)
