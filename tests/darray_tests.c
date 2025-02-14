@@ -36,7 +36,7 @@ void test_darray_push_to_darray() {
     ads_darrfree(integers);
 }
 
-void test_darray_darrlen() {
+void test_darray_darrcnt() {
     char* string = NULL;
 
     ADS_TEST_ASSERT(ads_darrcnt(string) == 0);
@@ -48,11 +48,17 @@ void test_darray_darrlen() {
     ads_darrpush(string, 'o');
 
     ADS_TEST_ASSERT(ads_darrcnt(string) == 5);
+
+    char hello[5] = "hello";
+    for(int i = 0; i < ads_darrcnt(string); i++) {
+        ADS_TEST_ASSERT(string[i] == hello[i]);
+    }
+
     ads_darrfree(string);
 }
 
 int main(void) {
     test_darray_push_on_null_ptr();
     test_darray_push_to_darray();
-    test_darray_darrlen();
+    test_darray_darrcnt();
 }
